@@ -19,6 +19,19 @@ public class HeroService {
     return heroRepository.save(hero);
   }
 
+  public Hero update(Hero heroToUpdate, long id) {
+    return heroRepository.findById(id)
+            .map(hero -> {
+              hero.setName(heroToUpdate.getName());
+              hero.setAntagonists(heroToUpdate.getAntagonists());
+              return heroRepository.save(hero);
+            })
+            .orElseGet(() -> {
+              heroToUpdate.setId(id);
+              return heroRepository.save(heroToUpdate);
+            });
+  }
+
   public List<Hero> findAll() {
     return (List<Hero>) heroRepository.findAll();
   }
@@ -26,7 +39,7 @@ public class HeroService {
   public List<Hero> findByName(String name) { return heroRepository.findByName(name); }
 
   public Hero findById(Long id) {
-    return heroRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    return heroRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id));
   }
 
   public void deleteById(Long id) {

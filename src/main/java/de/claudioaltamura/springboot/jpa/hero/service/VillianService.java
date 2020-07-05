@@ -26,7 +26,7 @@ public class VillianService {
   public List<Villian> findByName(String name) { return villianRepository.findByName(name); }
 
   public Villian findById(Long id) {
-    return villianRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    return villianRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id));
   }
 
   public void deleteById(Long id) {
