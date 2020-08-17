@@ -2,12 +2,7 @@ package de.claudioaltamura.springboot.jpa.hero.entities;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "villians")
@@ -21,6 +16,10 @@ public class Villian {
 
   @ManyToMany(mappedBy = "antagonists")
   private Set<Hero> heroes = new HashSet<>();
+
+  @OneToOne(cascade = CascadeType.ALL, optional = false)
+  @JoinColumn(name = "city_id")
+  private City city;
 
   public Villian(String name) {
     this.name = name;
@@ -50,10 +49,13 @@ public class Villian {
     this.heroes = heroes;
   }
 
+  public void setCity(City city) { this.city = city; }
+
+  public City getCity() { return city; }
+
   @Override
   public String toString() {
     return String.format(
-        "Villian[id=%d, name='%s']",
-        id, name);
-  }
-}
+            "Villian[id=%d, name='%s', city='%s']",
+            id, name, city);
+  }}
