@@ -1,7 +1,8 @@
 package de.claudioaltamura.springboot.jpa.hero;
 
+import de.claudioaltamura.springboot.jpa.hero.entities.City;
 import de.claudioaltamura.springboot.jpa.hero.entities.Hero;
-import de.claudioaltamura.springboot.jpa.hero.entities.Villian;
+import de.claudioaltamura.springboot.jpa.hero.entities.Villain;
 import de.claudioaltamura.springboot.jpa.hero.service.HeroService;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,10 +18,11 @@ public class HeroVillianImporter implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
-    Hero hero = new Hero("Batman");
+    City metropolis = new City("Metropolis");
+    Hero hero = new Hero("Batman", metropolis);
 
-    Set<Villian> antagonists = new HashSet<>();
-    antagonists.add(new Villian("Riddler"));
+    Set<Villain> antagonists = new HashSet<>();
+    antagonists.add(new Villain("Riddler", metropolis));
 
     hero.setAntagonists(antagonists);
 

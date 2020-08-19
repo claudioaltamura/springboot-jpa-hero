@@ -2,8 +2,9 @@ package de.claudioaltamura.springboot.jpa.hero;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.Villian;
-import de.claudioaltamura.springboot.jpa.hero.repositories.VillanRepository;
+import de.claudioaltamura.springboot.jpa.hero.entities.City;
+import de.claudioaltamura.springboot.jpa.hero.entities.Villain;
+import de.claudioaltamura.springboot.jpa.hero.repositories.VillainRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +12,23 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class VillianIntegrationTest {
+public class VillainIntegrationTest {
 
   @Autowired
   private TestEntityManager entityManager;
 
   @Autowired
-  private VillanRepository villianRepository;
+  private VillainRepository villianRepository;
 
   @Test
   void findById() {
-    Villian riddler = new Villian("Riddler");
+    City metropolis = new City("Metropolis");
+    Villain riddler = new Villain("Riddler",  metropolis);
 
     entityManager.persist(riddler);
 
-    Optional<Villian> villian = villianRepository.findById(riddler.getId());
+    Optional<Villain> villain = villianRepository.findById(riddler.getId());
 
-    assertThat(villian).isNotNull();
+    assertThat(villain).isNotNull();
   }
 }

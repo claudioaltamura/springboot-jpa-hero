@@ -5,8 +5,8 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "villians")
-public class Villian {
+@Table(name = "villains")
+public class Villain {
 
   @Id
   @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -21,8 +21,9 @@ public class Villian {
   @JoinColumn(name = "city_id")
   private City city;
 
-  public Villian(String name) {
+  public Villain(String name, City city) {
     this.name = name;
+    this.city = city;
   }
 
   public Long getId() {
@@ -56,6 +57,6 @@ public class Villian {
   @Override
   public String toString() {
     return String.format(
-            "Villian[id=%d, name='%s', city='%s']",
+            "Villain[id=%d, name='%s', city='%s']",
             id, name, city);
   }}

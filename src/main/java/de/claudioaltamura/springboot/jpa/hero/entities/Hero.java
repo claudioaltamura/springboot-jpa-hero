@@ -16,17 +16,18 @@ public class Hero {
 
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
-      name = "heroes_vilians",
+      name = "heroes_villains",
       joinColumns = @JoinColumn(name = "hero_id"),
-      inverseJoinColumns = @JoinColumn(name = "villian_id"))
-  private Set<Villian> antagonists = new HashSet<>();
+      inverseJoinColumns = @JoinColumn(name = "villain_id"))
+  private Set<Villain> antagonists = new HashSet<>();
 
   @OneToOne(cascade = CascadeType.ALL, optional = false)
   @JoinColumn(name = "city_id")
   private City city;
 
-  public Hero(String name) {
+  public Hero(String name, City city) {
     this.name = name;
+    this.city = city;
   }
 
   public Long getId() {
@@ -45,11 +46,11 @@ public class Hero {
     this.name = name;
   }
 
-  public Set<Villian> getAntagonists() {
+  public Set<Villain> getAntagonists() {
     return antagonists;
   }
 
-  public void setAntagonists(Set<Villian> antagonists) {
+  public void setAntagonists(Set<Villain> antagonists) {
     this.antagonists = antagonists;
   }
 
