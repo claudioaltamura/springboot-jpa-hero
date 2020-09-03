@@ -21,8 +21,7 @@ public class Hero {
       inverseJoinColumns = @JoinColumn(name = "villain_id"))
   private Set<Villain> antagonists = new HashSet<>();
 
-  @OneToOne(cascade = CascadeType.ALL, optional = false)
-  @JoinColumn(name = "city_id")
+  @ManyToOne(cascade = CascadeType.ALL, optional = false)
   private City city;
 
   public Hero(String name, City city) {

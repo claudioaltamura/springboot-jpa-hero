@@ -17,7 +17,7 @@ public class Villain {
   @ManyToMany(mappedBy = "antagonists")
   private Set<Hero> heroes = new HashSet<>();
 
-  @OneToOne(cascade = CascadeType.ALL, optional = false)
+  @ManyToOne(cascade = CascadeType.ALL, optional = false)
   @JoinColumn(name = "city_id")
   private City city;
 

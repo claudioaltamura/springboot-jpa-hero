@@ -16,4 +16,14 @@ public class City {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "City[id=%d, name='%s']",
+                id, name);
+    }
 }

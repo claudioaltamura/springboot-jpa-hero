@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.ActiveProfiles;
 
 @DataJpaTest
 class HeroIntegrationTest {
@@ -71,6 +72,23 @@ class HeroIntegrationTest {
 
     assertThat(heroes).isNotNull();
     assertThat(heroes).isEmpty();
+  }
+
+  @Test
+  void multipleHeroes() {
+    Hero batman = new Hero("Batman", metropolis);
+    Hero robin = new Hero("robin", metropolis);
+
+    heroRepository.save(batman);
+    heroRepository.save(robin);
+
+    assertThat(heroRepository.count()).isEqualTo(2L);
+
+    heroRepository.delete(robin);
+
+    Hero found = heroRepository.findById(batman.getId()).get();
+
+    assertThat(found.getCity().getName()).isEqualTo("Metropolis");
   }
 
 }
