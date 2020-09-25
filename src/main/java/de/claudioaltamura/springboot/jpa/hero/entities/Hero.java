@@ -1,6 +1,8 @@
 package de.claudioaltamura.springboot.jpa.hero.entities;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -23,6 +25,11 @@ public class Hero {
 
   @ManyToOne(cascade = CascadeType.ALL, optional = false)
   private City city;
+
+  @ManyToOne
+  private Hero master;
+  @OneToMany(mappedBy = "master")
+  private List<Hero> sidekicks = new ArrayList<Hero>();
 
   public Hero(String name, City city) {
     this.name = name;
@@ -56,6 +63,14 @@ public class Hero {
   public void setCity(City city) { this.city = city; }
 
   public City getCity() { return city; }
+
+  public Hero getMaster() { return master; }
+
+  public void setMaster(Hero master) { this.master = master; }
+
+  public List<Hero> getSidekicks() { return sidekicks; }
+
+  public void setSidekicks(List<Hero> sidekicks) { this.sidekicks = sidekicks; }
 
   @Override
   public String toString() {

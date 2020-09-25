@@ -24,6 +24,8 @@ public class HeroService {
             .map(hero -> {
               hero.setName(heroToUpdate.getName());
               hero.setAntagonists(heroToUpdate.getAntagonists());
+              hero.setCity(heroToUpdate.getCity());
+              hero.setSidekicks(heroToUpdate.getSidekicks());
               return heroRepository.save(hero);
             })
             .orElseGet(() -> {
