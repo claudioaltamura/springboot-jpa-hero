@@ -1,4 +1,4 @@
-package de.claudioaltamura.springboot.jpa.hero;
+package de.claudioaltamura.springboot.jpa.hero.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class VillainIntegrationTest {
+public class VillainRepositoryIntegrationTest {
 
   @Autowired
   private TestEntityManager entityManager;

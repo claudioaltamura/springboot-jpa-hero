@@ -1,24 +1,20 @@
-package de.claudioaltamura.springboot.jpa.hero;
+package de.claudioaltamura.springboot.jpa.hero.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import de.claudioaltamura.springboot.jpa.hero.entities.City;
 import de.claudioaltamura.springboot.jpa.hero.entities.Hero;
 import de.claudioaltamura.springboot.jpa.hero.entities.Villain;
-import de.claudioaltamura.springboot.jpa.hero.repositories.HeroRepository;
-import de.claudioaltamura.springboot.jpa.hero.repositories.VillainRepository;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.context.ActiveProfiles;
 
 @DataJpaTest
-class HeroIntegrationTest {
+class HeroRepositoryIntegrationTest {
 
   @Autowired
   private TestEntityManager entityManager;
@@ -89,6 +85,26 @@ class HeroIntegrationTest {
     Hero found = heroRepository.findById(batman.getId()).get();
 
     assertThat(found.getCity().getName()).isEqualTo("Metropolis");
+  }
+
+  @Test
+  void sidekicks() {
+    Hero batman = new Hero("Batman", metropolis);
+
+    List<Hero> sidekicks = new ArrayList<Hero>();
+    Hero nightWing = new Hero("Night Wing", metropolis);
+    nightWing.setMaster(batman);
+    Hero robin = new Hero("Robin",  metropolis);
+    robin.setMaster(batman);
+    sidekicks.add(nightWing);
+    sidekicks.add(robin);
+    batman.setSidekicks(sidekicks);
+
+    entityManager.persist(batman);
+
+    Optional<Hero> foundHero = heroRepository.findById(batman.getId());
+    assertThat(foundHero.isPresent());
+    assertThat(foundHero.get().getSidekicks().size()).isEqualTo(2);
   }
 
 }
