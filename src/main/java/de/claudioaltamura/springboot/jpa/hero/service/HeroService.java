@@ -5,15 +5,17 @@ import de.claudioaltamura.springboot.jpa.hero.repositories.HeroRepository;
 import de.claudioaltamura.springboot.jpa.hero.exceptions.EntityNotFoundException;
 import java.util.List;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 public class HeroService {
 
-  @Autowired
   private HeroRepository heroRepository;
+
+  public HeroService(HeroRepository heroRepository) {
+      this.heroRepository = heroRepository;
+  }
 
   public Hero add(Hero hero) {
     return heroRepository.save(hero);
