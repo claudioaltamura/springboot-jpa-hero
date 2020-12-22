@@ -1,4 +1,4 @@
-package de.claudioaltamura.springboot.jpa.hero.entities;
+package de.claudioaltamura.springboot.jpa.hero.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Villain {
 
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private String name;

@@ -1,10 +1,10 @@
-package de.claudioaltamura.springboot.jpa.hero.repositories;
+package de.claudioaltamura.springboot.jpa.hero.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.City;
-import de.claudioaltamura.springboot.jpa.hero.entities.Hero;
-import de.claudioaltamura.springboot.jpa.hero.entities.Villain;
+import de.claudioaltamura.springboot.jpa.hero.entity.City;
+import de.claudioaltamura.springboot.jpa.hero.entity.Hero;
+import de.claudioaltamura.springboot.jpa.hero.entity.Villain;
 
 import java.util.*;
 
@@ -91,7 +91,7 @@ class HeroRepositoryIntegrationTest {
   void sidekicks() {
     Hero batman = new Hero("Batman", metropolis);
 
-    List<Hero> sidekicks = new ArrayList<Hero>();
+    List<Hero> sidekicks = new ArrayList<>();
     Hero nightWing = new Hero("Night Wing", metropolis);
     nightWing.setMaster(batman);
     Hero robin = new Hero("Robin",  metropolis);
@@ -103,7 +103,7 @@ class HeroRepositoryIntegrationTest {
     entityManager.persist(batman);
 
     Optional<Hero> foundHero = heroRepository.findById(batman.getId());
-    assertThat(foundHero.isPresent());
+    assertThat(foundHero.isPresent()).isTrue();
     assertThat(foundHero.get().getSidekicks().size()).isEqualTo(2);
   }
 

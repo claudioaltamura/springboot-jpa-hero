@@ -1,8 +1,8 @@
 package de.claudioaltamura.springboot.jpa.hero.service;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.Hero;
-import de.claudioaltamura.springboot.jpa.hero.repositories.HeroRepository;
-import de.claudioaltamura.springboot.jpa.hero.exceptions.EntityNotFoundException;
+import de.claudioaltamura.springboot.jpa.hero.entity.Hero;
+import de.claudioaltamura.springboot.jpa.hero.repository.HeroRepository;
+
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class HeroService {
 
-  private HeroRepository heroRepository;
+  private final HeroRepository heroRepository;
 
   public HeroService(HeroRepository heroRepository) {
       this.heroRepository = heroRepository;

@@ -1,4 +1,4 @@
-package de.claudioaltamura.springboot.jpa.hero.entities;
+package de.claudioaltamura.springboot.jpa.hero.entity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Hero {
 
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private String name;
@@ -29,7 +29,7 @@ public class Hero {
   @ManyToOne
   private Hero master;
   @OneToMany(mappedBy = "master")
-  private List<Hero> sidekicks = new ArrayList<Hero>();
+  private List<Hero> sidekicks = new ArrayList<>();
 
   public Hero(String name, City city) {
     this.name = name;

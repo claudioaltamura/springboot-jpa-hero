@@ -1,4 +1,4 @@
-package de.claudioaltamura.springboot.jpa.hero.exceptions;
+package de.claudioaltamura.springboot.jpa.hero.service;
 
 public class EntityNotFoundException extends RuntimeException {
 

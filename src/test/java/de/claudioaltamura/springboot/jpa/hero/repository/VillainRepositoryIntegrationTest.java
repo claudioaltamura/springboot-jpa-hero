@@ -1,10 +1,10 @@
-package de.claudioaltamura.springboot.jpa.hero.repositories;
+package de.claudioaltamura.springboot.jpa.hero.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.City;
-import de.claudioaltamura.springboot.jpa.hero.entities.Villain;
-import de.claudioaltamura.springboot.jpa.hero.repositories.VillainRepository;
+import de.claudioaltamura.springboot.jpa.hero.entity.City;
+import de.claudioaltamura.springboot.jpa.hero.entity.Villain;
+
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class VillainRepositoryIntegrationTest {
+class VillainRepositoryIntegrationTest {
 
   @Autowired
   private TestEntityManager entityManager;

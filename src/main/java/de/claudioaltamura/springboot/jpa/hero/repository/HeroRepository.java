@@ -1,6 +1,6 @@
-package de.claudioaltamura.springboot.jpa.hero.repositories;
+package de.claudioaltamura.springboot.jpa.hero.repository;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.Hero;
+import de.claudioaltamura.springboot.jpa.hero.entity.Hero;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 

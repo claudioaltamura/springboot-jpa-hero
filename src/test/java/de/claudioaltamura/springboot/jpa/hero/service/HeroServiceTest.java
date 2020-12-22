@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.Hero;
-import de.claudioaltamura.springboot.jpa.hero.repositories.HeroRepository;
+import de.claudioaltamura.springboot.jpa.hero.entity.Hero;
+import de.claudioaltamura.springboot.jpa.hero.repository.HeroRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -30,6 +30,7 @@ class HeroServiceTest {
         Hero foundHero = heroService.findById(42L);
 
         assertThat(foundHero).isNotNull();
+
         verify(heroRepository).findById(42L);
     }
 

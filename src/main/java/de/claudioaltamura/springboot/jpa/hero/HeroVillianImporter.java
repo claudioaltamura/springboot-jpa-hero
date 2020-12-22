@@ -1,9 +1,8 @@
 package de.claudioaltamura.springboot.jpa.hero;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.City;
-import de.claudioaltamura.springboot.jpa.hero.entities.Hero;
-import de.claudioaltamura.springboot.jpa.hero.entities.Villain;
-import de.claudioaltamura.springboot.jpa.hero.repositories.HeroRepository;
+import de.claudioaltamura.springboot.jpa.hero.entity.City;
+import de.claudioaltamura.springboot.jpa.hero.entity.Hero;
+import de.claudioaltamura.springboot.jpa.hero.entity.Villain;
 import de.claudioaltamura.springboot.jpa.hero.service.HeroService;
 
 import java.util.ArrayList;
@@ -17,8 +16,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class HeroVillianImporter implements CommandLineRunner {
 
-  @Autowired
-  private HeroService heroService;
+  private final HeroService heroService;
+
+  public HeroVillianImporter(HeroService heroService) {
+  	this.heroService = heroService;
+  }
 
   @Override
   public void run(String... args) {
@@ -29,7 +31,7 @@ public class HeroVillianImporter implements CommandLineRunner {
     antagonists.add(new Villain("Riddler", metropolis));
     batman.setAntagonists(antagonists);
 
-    List<Hero> sidekicks = new ArrayList<Hero>();
+    List<Hero> sidekicks = new ArrayList<>();
     Hero nightWing = new Hero("Night Wing", metropolis);
     nightWing.setMaster(batman);
     Hero robin = new Hero("Robin",  metropolis);

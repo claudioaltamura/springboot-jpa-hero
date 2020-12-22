@@ -1,4 +1,4 @@
-package de.claudioaltamura.springboot.jpa.hero.entities;
+package de.claudioaltamura.springboot.jpa.hero.entity;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class City {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

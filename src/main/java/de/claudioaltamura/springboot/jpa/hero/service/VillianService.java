@@ -1,8 +1,8 @@
 package de.claudioaltamura.springboot.jpa.hero.service;
 
-import de.claudioaltamura.springboot.jpa.hero.entities.Villain;
-import de.claudioaltamura.springboot.jpa.hero.exceptions.EntityNotFoundException;
-import de.claudioaltamura.springboot.jpa.hero.repositories.VillainRepository;
+import de.claudioaltamura.springboot.jpa.hero.entity.Villain;
+import de.claudioaltamura.springboot.jpa.hero.repository.HeroRepository;
+import de.claudioaltamura.springboot.jpa.hero.repository.VillainRepository;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class VillianService {
 
-  @Autowired
-  private VillainRepository villainRepository;
+  private final VillainRepository villainRepository;
+
+  public VillianService(VillainRepository villainRepository) {
+  	this.villainRepository = villainRepository;
+  }
 
   public Villain add(Villain villain) {
     return villainRepository.save(villain);
