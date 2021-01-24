@@ -1,11 +1,9 @@
 package de.claudioaltamura.springboot.jpa.hero.service;
 
 import de.claudioaltamura.springboot.jpa.hero.entity.Villain;
-import de.claudioaltamura.springboot.jpa.hero.repository.HeroRepository;
 import de.claudioaltamura.springboot.jpa.hero.repository.VillainRepository;
 import java.util.List;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
