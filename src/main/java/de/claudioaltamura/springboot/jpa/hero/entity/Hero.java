@@ -7,7 +7,12 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "heroes")
+@Table(name = "heroes",
+		indexes = {
+			@Index(name = "CITY_IDX", columnList = "city_id"),
+			@Index(name = "MASTER_IDX", columnList = "master_id"),
+	}
+)
 public class Hero {
 
   @Id
@@ -30,6 +35,8 @@ public class Hero {
   private Hero master;
   @OneToMany(mappedBy = "master")
   private List<Hero> sidekicks = new ArrayList<>();
+
+  public Hero() {}
 
   public Hero(String name, City city) {
     this.name = name;

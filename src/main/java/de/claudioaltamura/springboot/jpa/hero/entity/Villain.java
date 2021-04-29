@@ -5,7 +5,11 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "villains")
+@Table(name = "villains",
+		indexes = {
+				@Index(name = "CITY_IDX", columnList = "city_id")
+		}
+)
 public class Villain {
 
   @Id
@@ -20,6 +24,8 @@ public class Villain {
   @ManyToOne(cascade = CascadeType.ALL, optional = false)
   @JoinColumn(name = "city_id")
   private City city;
+
+  public Villain() {}
 
   public Villain(String name, City city) {
     this.name = name;
