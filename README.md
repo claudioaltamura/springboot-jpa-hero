@@ -4,3 +4,13 @@
 
 # springboot-jpa-hero
 Spring Boot JPA Hero application example
+
+# docker-compose
+
+    docker-compose up -d
+
+    docker-compose down -v
+
+    docker-compose exec mysql /bin/bash
+
+    docker-compose logs -f mysql
