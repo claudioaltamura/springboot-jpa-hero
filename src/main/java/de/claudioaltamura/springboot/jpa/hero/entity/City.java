@@ -1,16 +1,23 @@
 package de.claudioaltamura.springboot.jpa.hero.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
-@Table(name = "cities")
+@Table(name = "cities", indexes = {
+		@Index(name = "IDX_CITY_name", columnList = "name")
+})
 public class City {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(nullable = false, updatable = false)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@PositiveOrZero
+    private long id;
 
-    private String name;
+    @NotNull
+	private String name;
 
 	public City() {}
 
